@@ -32,8 +32,11 @@ namespace Security_Code
         {
             string strTableChar = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
             StringBuilder codeStr = new StringBuilder(len);
-            Random ro = new Random(GetRandomSeed());
+            IDictionary<int, string> codeDic = new Dictionary<int, string>();
+            //Random ro = new Random(GetRandomSeed()); //RNGCryptoServiceProvider生成种子
+            Random ro = new Random(); //生成默认生成种子
             int iResult;
+
             int iup = strTableChar.Length;
             if (len < 1 || count < 1)
             {
@@ -44,10 +47,22 @@ namespace Security_Code
                 for (int j = len; j > 0; j--)
                 {
                     iResult = ro.Next(iup);
-                    codeStr.Append(strTableChar.Substring(iResult, 1));
+                    codeStr.Append(strTableChar.Substring(iResult, 1)); //字符串截取
                 }
-                //Console.WriteLine(codeStr);
-                codeStr.Clear();
+                #region 哈希值判断生成的防伪码是否重复
+                //if (!codeDic.ContainsKey(codeStr.ToString().GetHashCode()))//哈希值判断键值是否重复
+                //{
+                //    codeDic.Add(codeStr.ToString().GetHashCode(), codeStr.ToString());
+                //}
+                //else
+                //{
+                //    count++;
+                //}
+                #endregion
+                //Console.WriteLine(codeStr.ToString());
+                //Console.WriteLine(ikey);
+                //Console.ReadKey();
+                codeStr.Clear();//StringBuffer 清空
             }
         }
         /// <summary>
