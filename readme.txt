@@ -120,3 +120,14 @@ string strTableChar = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
 3）stringBuilder的用法，试试用string和stringBuilder有什么不同？听听老师的课……
 
 4）多次运行程序后，会不会发现程序运行速度会加快？看看这里：《告诉一个不一样的.NET Framework字符串驻留》，另外也可以找找对应.NET Framework底层实现的文章。
+
+无输出
+a) 7.9189；b) 1360.7193；c) 3362.3895
+
+有输出
+a) 7.9189；b) 1360.7193；c) 3362.3895
+
+一开始简单实现了功能，可能有重复的
+然后加了RNGCryptoServiceProvider来生成随机种子，速度感觉
+然后加了哈希来验证有无出现重复，关于字典树查看msdn上的http://msdn.microsoft.com/zh-cn/library/s4ys34ea.aspx
+关于哈希值参考了这篇文章 《Guidelines and rules for GetHashCode》blogs.msdn.com/b/ericlippert/archive/2011/02/28/guidelines-and-rules-for-gethashcode.aspx
