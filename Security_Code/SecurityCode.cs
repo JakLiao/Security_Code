@@ -26,14 +26,20 @@ namespace Security_Code
         public void createSecurityCode(int len, int count) 
         {
             string strTableChar = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-            Hashtable hashtable = new Hashtable(); 
+            StringBuilder codeStr = new StringBuilder(10);
+            List<string> list = new List<string>();
+            Random ro = new Random();
+            int iResult;
+            int iUp = 34;
             for (int i = count; i > 0; i--)
             {
-                Random ro = new Random();
-                int iResult;
-                int iUp = 34;
-                iResult = ro.Next(iUp);
-                Console.WriteLine(iResult);
+                for (int j = len; j > 0; j--)
+                {
+                    iResult = ro.Next(iUp);
+                    codeStr.Append(strTableChar[iResult]);
+                }
+                Console.WriteLine(codeStr);
+                codeStr.Clear();
             }
         }
     }
